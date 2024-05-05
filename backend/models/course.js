@@ -6,7 +6,6 @@ const ratingSchema = new Schema({
 });
 
 const courseSchema = new Schema({
-  CourseID: { type: String, required: true, unique: true },
   title: { type: String, required: true },
   description: { type: String, required: true },
   price: { type: Number, required: true },
@@ -14,7 +13,9 @@ const courseSchema = new Schema({
   image: { type: String, required: true },
   video: [{ type: String, required: true }],
   stock: { type: Number, required: true },
-  rating: [ratingSchema]
+  rating: [{
+    rating: { type: Number, required: true }
+  }]
 });
 
 module.exports = mongoose.model('Course', courseSchema);
