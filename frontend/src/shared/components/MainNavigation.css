@@ -1,0 +1,40 @@
+.nav-header {
+  display: flex;
+  justify-content: space-around;
+  background-color: var(--nav-background);
+  height: 4rem;
+  width: 100%;
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.1);
+  top: 0px;
+  position: fixed;
+}
+
+.nav-title {
+  font-style: italic;
+  font-size: x-large;
+  font-weight: 700;
+  color: var(--primary-color)
+}
+
+.nav-links {
+  display: flex;
+  justify-content: space-between;
+  width: 20rem;
+  font-weight: 400;
+  
+}
+
+.nav-links li a {
+  text-decoration: none;
+  color: var(--secondary-color);
+  height: 100%;
+  padding: 1rem;
+  transition: all 0.3s ease 0s;
+}
+
+.nav-links li a:hover,
+.nav-links li a:active,
+.nav-links li a.active {
+  color: var(--primary-color);
+  opacity: 90%;
+}
