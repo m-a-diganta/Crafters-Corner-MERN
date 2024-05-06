@@ -1,10 +1,10 @@
 .nav-header {
   display: flex;
   justify-content: space-around;
-  background-color: var(--nav-background);
+  background-color: var(--primary-gray);
   height: 4rem;
   width: 100%;
-  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--box-shadow);
   top: 0px;
   position: fixed;
 }

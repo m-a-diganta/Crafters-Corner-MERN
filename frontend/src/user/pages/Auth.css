@@ -1,0 +1,89 @@
+.login-box {
+  background-color: var(--primary-gray);
+  width: 30rem;
+  height: 40rem;
+  margin-top: 5rem;
+  box-shadow: var(--box-shadow);
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+}
+
+.login-signup-switch{
+  display: flex;
+  justify-content: space-between;
+}
+
+.login-signup-switch a {
+  width: 100%;
+  height: 5rem;
+  font-size: x-large;
+  font-weight: 800;
+  
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.login-signup-switch a.primary {
+  border-radius: 15px 0px;
+}
+
+.login-signup-switch a.secondary {
+  border-radius: 0px 15px;
+  
+}
+
+.login-signup-switch a.active {
+  background-color: var(--primary-gray);
+  color: var(--primary-color);
+}
+
+.login-signup-switch a.inactive.secondary {
+  background-color: var(--dark-gray);
+  color: var(--darker-gray);
+  box-shadow: inset 3px -3px 10px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.login-signup-switch a.inactive.primary {
+  background-color: #d4d4d4;
+  color: rgb(136, 136, 136);
+  box-shadow: inset -3px -3px 10px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+/* ----------------------------------------------------- */
+
+.form-box {
+  width: 100%;
+  height: 100%;
+  margin-top: 3rem;
+  display: flex;
+  justify-content: center;
+  
+}
+
+.form-box form {
+  width: 18rem;
+}
+
+.form-box button {
+  width: 100%;
+  height: 3rem;
+  border-radius: 10px;
+  margin-top: 1rem;
+  cursor: pointer;
+  font-size: large;
+  border: 2px solid var(--primary-color);
+  color: var(--primary-color);
+  box-shadow: inset -2px -2px 3px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease 0s;
+}
+
+.form-box button:hover {
+  background-color: var(--primary-color);
+  color: var(--primary-gray)
+}
+
