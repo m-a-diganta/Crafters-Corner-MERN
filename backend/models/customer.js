@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const uniqueValidator = require('mongoose-unique-validator');
 const Schema = mongoose.Schema;
 
 const customerSchema = new Schema({
@@ -8,9 +9,11 @@ const customerSchema = new Schema({
   image: { type: String, required: true },
   cart: [{
       pid: { type: Schema.Types.ObjectId, required: true, ref: 'Product' },
-      quantity: { type: Number, required: true }
+      quantity: { type: Number}
       }],
   orderList: [{ type: Schema.Types.ObjectId, ref: 'Order' }]
 });
 
-module.exports = mongoose.model('Customer', customerSchema);
+customerSchema.plugin(uniqueValidator);
+
+module.exports = mongoose.model('Customers', customerSchema);
