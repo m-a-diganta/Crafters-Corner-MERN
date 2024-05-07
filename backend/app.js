@@ -7,12 +7,16 @@ const app = express();
 
 const customersRoutes = require('./routes/customers-routes');
 const sellersRoutes = require('./routes/sellers-routes');
+const productsRoutes = require('./routes/products-routes');
+const coursesRoutes = require('./routes/courses-routes');
 
 
 app.use(bodyParser.json());
 
 app.use('/customers',customersRoutes);
 app.use('/sellers',sellersRoutes);
+app.use('/products',productsRoutes);
+app.use('/courses',coursesRoutes);
 
 app.get('/', (req, res, next) => {
   res.json({ message: 'Welcome ' });
