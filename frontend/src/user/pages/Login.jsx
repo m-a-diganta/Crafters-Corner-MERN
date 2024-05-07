@@ -20,7 +20,7 @@ const Login = () => {
 
   return (
     <main className="center">
-      <div className="login-box">
+      <div className="auth-box login">
         <div className="login-signup-switch">
           <Link to="/login" className="primary active center">
             LOGIN
@@ -48,7 +48,9 @@ const Login = () => {
               placeholder="********"
               onInput={inputHandler}
             />
-            <button type="submit">LOGIN</button>
+            <button className="submit-button" type="submit">
+              LOGIN
+            </button>
           </form>
         </div>
       </div>
