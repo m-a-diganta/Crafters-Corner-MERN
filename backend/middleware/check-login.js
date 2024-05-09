@@ -31,4 +31,14 @@ const checkLogin = (req, res, next) => {
   }
 };
 
-module.exports = checkLogin;
+const logout = (req, res, next) => {
+  res
+    .cookie("token", "", {
+      httpOnly: true,
+      expires: new Date(0),
+    })
+    .send();
+};
+
+module.exports.checkLogin = checkLogin;
+module.exports.logout = logout;

@@ -19,22 +19,33 @@
 .nav-links {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   width: 20rem;
   font-weight: 400;
   
 }
 
-.nav-links li a {
+.nav-links li a,
+.nav-links li button {
   text-decoration: none;
   color: var(--secondary-color);
+  font-size: 1rem;
   height: 100%;
   padding: 1rem;
   transition: all 0.3s ease 0s;
 }
 
+.nav-links li button {
+  outline: none;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
 .nav-links li a:hover,
 .nav-links li a:active,
-.nav-links li a.active {
+.nav-links li a.active,
+.nav-links li button:hover {
   color: var(--primary-color);
   opacity: 90%;
 }

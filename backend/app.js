@@ -2,9 +2,10 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const cookieParser = require("cookie-parser");
+const cors = require("cors");
 
 const HttpError = require("./models/http-error");
-const checkLogin = require("./middleware/check-login");
+const { checkLogin, logout } = require("./middleware/check-login");
 
 const app = express();
 
@@ -15,12 +16,19 @@ const coursesRoutes = require("./routes/courses-routes");
 
 app.use(bodyParser.json());
 app.use(cookieParser());
+app.use(
+  cors({
+    origin: ["http://localhost:5173"],
+    credentials: true,
+  })
+);
 
 app.use("/customers", customersRoutes);
 app.use("/sellers", sellersRoutes);
 app.use("/products", productsRoutes);
 app.use("/courses", coursesRoutes);
-app.get("/loggedin", checkLogin);
+app.get("/loggedIn", checkLogin);
+app.get("/loggedOut", logout);
 
 app.get("/", (req, res, next) => {
   res.json({ message: "Welcome " });
