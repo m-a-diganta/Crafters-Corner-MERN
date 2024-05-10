@@ -1,28 +1,55 @@
-import React, { useRef, useState } from "react";
-import defaultUserImage from "../../assets/user.svg";
+import React, { useContext, useRef, useState } from "react";
+import axios from "axios";
+import { Link, useNavigate } from "react-router-dom";
 
-import { Link } from "react-router-dom";
-
-import "./Auth.css";
 import Input from "../../shared/components/FormElements/Input";
 
+import defaultUserImage from "../../assets/user.svg";
+import "./Auth.css";
+import { AuthContext } from "../../shared/context/auth-context";
+import Avatar from "../../shared/components/UIElements/Avatar";
+import Button from "../../shared/components/FormElements/Button";
+
 const Signup = () => {
+  const auth = useContext(AuthContext);
+
   const filePickerRef = useRef();
   const [formContent, setFormContent] = useState({
     username: "",
     email: "",
     password: "",
     imageUrl: "",
-    type: "customer",
+    role: "customer",
   });
 
   const inputHandler = (id, value) => {
     setFormContent({ ...formContent, [id]: value });
   };
 
-  const signupSubmitHandler = (event) => {
+  const navigate = useNavigate();
+
+  const signupSubmitHandler = async (event) => {
     event.preventDefault();
-    console.log(formContent);
+    try {
+      const formData = new FormData();
+      formData.append("name", formContent.username);
+      formData.append("email", formContent.email);
+      formData.append("password", formContent.password);
+      formData.append("image", formContent.imageUrl);
+      formData.append("role", formContent.role);
+
+      const response = await axios.post(
+        `http://localhost:5000/${formContent.role}s/signup`,
+        formData
+      );
+
+      console.log(response);
+
+      await auth.login();
+      navigate("/");
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   const pickImageHandler = () => {
@@ -44,14 +71,14 @@ const Signup = () => {
         <div className="form-box">
           <form onSubmit={signupSubmitHandler}>
             <div className="form-image-content">
-              <div className="form-image center" onClick={pickImageHandler}>
+              <div className="form-image" onClick={pickImageHandler}>
                 {formContent.imageUrl ? (
-                  <img
-                    src={URL.createObjectURL(formContent.imageUrl)}
+                  <Avatar
+                    image={URL.createObjectURL(formContent.imageUrl)}
                     alt="Pick an Image"
                   />
                 ) : (
-                  <img src={defaultUserImage} alt="Pick an Image" />
+                  <Avatar image={defaultUserImage} alt="Pick an Image" />
                 )}
 
                 <input
@@ -99,8 +126,8 @@ const Signup = () => {
                   id="customer"
                   name="type"
                   value="customer"
-                  onChange={(e) => inputHandler("type", e.target.value)}
-                  checked={formContent.type === "customer"}
+                  onChange={(e) => inputHandler("role", e.target.value)}
+                  checked={formContent.role === "customer"}
                 />
                 <label htmlFor="customer">Customer</label>
                 <input
@@ -108,16 +135,16 @@ const Signup = () => {
                   id="seller"
                   name="type"
                   value="seller"
-                  onChange={(e) => inputHandler("type", e.target.value)}
-                  checked={formContent.type === "seller"}
+                  onChange={(e) => inputHandler("role", e.target.value)}
+                  checked={formContent.role === "seller"}
                 />
                 <label htmlFor="seller">Seller</label>
               </div>
             </div>
 
-            <button className="submit-button" type="submit">
-              SIGNUP
-            </button>
+            <div className="signup-login__form-button">
+              <Button type="submit">SIGNUP</Button>
+            </div>
           </form>
         </div>
       </div>

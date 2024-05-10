@@ -1,0 +1,13 @@
+.button {
+  cursor: pointer;
+  font-size: large;
+  border: 2px solid var(--primary-color);
+  color: var(--primary-color);
+  box-shadow: inset -2px -2px 3px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease 0s;
+}
+
+.button:hover {
+  background-color: var(--primary-color);
+  color: var(--primary-gray)
+}

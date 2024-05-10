@@ -1,6 +1,7 @@
 const { validationResult } = require("express-validator");
 const HttpError = require("../models/http-error");
 const Seller = require("../models/seller");
+const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
 const getSellers = async (req, res, next) => {
@@ -39,12 +40,22 @@ const signupSeller = async (req, res, next) => {
     return next(error);
   }
 
+  let hashedPassword;
+  try {
+    hashedPassword = await bcrypt.hash(password, 12);
+  } catch (err) {
+    const error = new HttpError(
+      "Could not create user. Please try again.",
+      500
+    );
+    return next(error);
+  }
+
   const createdSeller = new Seller({
     name,
     email,
-    image:
-      "https://i.pinimg.com/564x/7d/34/d9/7d34d9d53640af5cfd2614c57dfa7f13.jpg",
-    password,
+    image: req.file.path,
+    password: hashedPassword,
     productList: [],
     courseList: [],
   });
@@ -93,8 +104,27 @@ const loginSeller = async (req, res, next) => {
     return next(error);
   }
 
-  if (!existingSeller || existingSeller.password !== password) {
-    const error = new HttpError("Invalid credentials", 401);
+  if (!existingSeller) {
+    const error = new HttpError("Invalid credentials", 403);
+    return next(error);
+  }
+
+  let isValidPassword = false;
+  try {
+    isValidPassword = await bcrypt.compare(password, existingSeller.password);
+  } catch (err) {
+    const error = new HttpError(
+      "Could not log you in, please check your credentials and try again",
+      500
+    );
+    return next(error);
+  }
+
+  if (!isValidPassword) {
+    const error = new HttpError(
+      "Invalid credentials, could not log you in",
+      403
+    );
     return next(error);
   }
 

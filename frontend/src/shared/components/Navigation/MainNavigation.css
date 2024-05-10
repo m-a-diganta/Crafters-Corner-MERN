@@ -1,13 +1,17 @@
 .nav-header {
   display: flex;
-  justify-content: space-around;
+  /* position: relative; */
+  justify-content: space-between;
   background-color: var(--primary-gray);
+  padding: 0vw 12vw;
   height: 4rem;
   width: 100%;
   box-shadow: var(--box-shadow);
   top: 0px;
   position: fixed;
 }
+
+
 
 .nav-title {
   font-style: italic;
@@ -16,13 +20,17 @@
   color: var(--primary-color)
 }
 
-.nav-links {
+.nav-links ul {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
   width: 20rem;
   font-weight: 400;
   
+}
+
+.nav-links li {
+  margin-left: 2rem;
 }
 
 .nav-links li a,
@@ -48,4 +56,19 @@
 .nav-links li button:hover {
   color: var(--primary-color);
   opacity: 90%;
+}
+
+.avatar-image {
+  cursor: pointer;
+  border-radius: 50%;
+  outline: 2px solid white;
+  outline-offset: 2px;
+  transition: outline-color 0.3s ease, outline-offset 0.3s ease;
+}
+
+.avatar-image:hover {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+  transition: all 0.3 ease 0s;
+
 }

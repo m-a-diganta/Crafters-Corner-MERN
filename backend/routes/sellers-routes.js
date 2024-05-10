@@ -5,11 +5,13 @@ const router = express.Router();
 
 const sellersController = require("../controllers/sellers-controller");
 const customersController = require("../controllers/customers-controller");
+const fileUpload = require("../middleware/file-upload");
 
 router.get("/", sellersController.getSellers);
 
 router.post(
   "/signup",
+  fileUpload.single("image"),
   [
     check("name").not().isEmpty(),
     check("email").normalizeEmail().isEmail(),

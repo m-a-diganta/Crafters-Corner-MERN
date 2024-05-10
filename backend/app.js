@@ -3,6 +3,7 @@ const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const cookieParser = require("cookie-parser");
 const cors = require("cors");
+const fs = require("fs");
 
 const HttpError = require("./models/http-error");
 const { checkLogin, logout } = require("./middleware/check-login");
@@ -40,6 +41,11 @@ app.use((req, res, next) => {
 });
 
 app.use((error, req, res, next) => {
+  if (req.file) {
+    fs.unlink(req.file.path, () => {
+      console.log(error);
+    });
+  }
   if (res.headerSent) {
     return next(error);
   }

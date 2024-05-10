@@ -5,6 +5,7 @@ import axios from "axios";
 import "./Auth.css";
 import Input from "../../shared/components/FormElements/Input";
 import { AuthContext } from "../../shared/context/auth-context";
+import Button from "../../shared/components/FormElements/Button";
 
 const Login = () => {
   const auth = useContext(AuthContext);
@@ -35,7 +36,7 @@ const Login = () => {
       );
 
       await auth.login();
-      navigate("/store");
+      navigate("/");
     } catch (err) {
       console.log(err);
     }
@@ -71,9 +72,9 @@ const Login = () => {
               placeholder="********"
               onInput={inputHandler}
             />
-            <button className="submit-button" type="submit">
-              LOGIN
-            </button>
+            <div className="signup-login__form-button">
+              <Button type="submit">LOGIN</Button>
+            </div>
           </form>
         </div>
       </div>
