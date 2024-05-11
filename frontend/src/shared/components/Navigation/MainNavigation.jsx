@@ -4,6 +4,7 @@ import { NavLink } from "react-router-dom";
 import { AuthContext } from "../../context/auth-context";
 import "./MainNavigation.css";
 import tempImage from "../../../assets/temp.png";
+import defaultExpandImage from "../../../assets/expand-button.png";
 import Avatar from "../UIElements/Avatar";
 import SideDrawer from "./SideDrawer";
 import NavLinks from "./NavLinks";
@@ -13,17 +14,17 @@ const MainNavigation = () => {
   const [drawerIsOpen, setDrawerIsOpen] = useState(false);
   const sideDrawerRef = useRef();
 
-  const loggedOutPaths = {
-    Login: "/login",
-  };
+  const loggedOutPaths = {};
 
-  const sellerPaths = {
-    Image: tempImage,
-  };
+  const sellerPaths = {};
 
   const customerPaths = {};
 
-  const sideDrawerPaths = {
+  const dropDownIcon = {
+    Image: auth.isLoggedIn ? tempImage : defaultExpandImage,
+  };
+
+  let sideDrawerPaths = {
     Dashboard: "/dashboard",
     Settings: "/settings",
     Logout: auth.logout,
@@ -36,14 +37,16 @@ const MainNavigation = () => {
   };
 
   if (!auth.isLoggedIn) {
-    navBarPaths = { ...navBarPaths, ...loggedOutPaths };
+    navBarPaths = { ...navBarPaths, ...loggedOutPaths, ...dropDownIcon };
+    sideDrawerPaths = {
+      Signup: "/signup",
+      Login: "/login",
+    };
   } else if (auth.role === "customer") {
-    navBarPaths = { ...navBarPaths, ...customerPaths };
+    navBarPaths = { ...navBarPaths, ...customerPaths, ...dropDownIcon };
   } else if (auth.role === "seller") {
-    navBarPaths = { ...navBarPaths, ...sellerPaths };
+    navBarPaths = { ...navBarPaths, ...sellerPaths, ...dropDownIcon };
   }
-
-  console.log(navBarPaths);
 
   const sideDrawerHandler = (event) => {
     event.stopPropagation();
@@ -68,7 +71,11 @@ const MainNavigation = () => {
       <h1 className="nav-title center">Crafters Corner</h1>
       <div onClick={sideDrawerHandler} ref={sideDrawerRef}>
         <SideDrawer status={drawerIsOpen}>
-          <NavLinks paths={sideDrawerPaths} type="SideDrawer" />
+          <NavLinks
+            paths={sideDrawerPaths}
+            additionalPaths={navBarPaths}
+            type="SideDrawer"
+          />
         </SideDrawer>
       </div>
       <nav className="center">
@@ -78,39 +85,6 @@ const MainNavigation = () => {
             type="NavBar"
             onClick={sideDrawerHandler}
           />
-          {/* <ul>
-            <li>
-              <NavLink to="/">Home</NavLink>
-            </li>
-            {!auth.isLoggedIn && (
-              <li>
-                <NavLink to="/check">Check</NavLink>
-              </li>
-            )}
-            {auth.isLoggedIn && auth.role === "customer" && (
-              <li>
-                <NavLink to="/cart">Cart</NavLink>
-              </li>
-            )}
-            {auth.isLoggedIn && auth.role === "seller" && (
-              <li>
-                <NavLink to="/store">Store</NavLink>
-              </li>
-            )}
-            {!auth.isLoggedIn && (
-              <li>
-                <NavLink to="/login">Login</NavLink>
-              </li>
-            )}
-
-            {auth.isLoggedIn && (
-              <li>
-                <div className="avatar-image" onClick={sideDrawerHandler}>
-                  <Avatar image={tempImage} width="2.5rem" alt="hello" />
-                </div>
-              </li>
-            )}
-          </ul> */}
         </div>
       </nav>
     </header>

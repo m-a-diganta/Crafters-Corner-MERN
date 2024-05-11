@@ -61,3 +61,18 @@
   transform: translateY(-20px);
   transition: all 0.3s ease 0s;
 }
+
+.side-drawer__box li:empty {
+  display: none;
+  
+}
+
+@media (min-width: 768px) {
+  .side-drawer__box .additional-paths {
+    display: none;
+  }
+
+  /* .side-drawer__box.logged-out {
+    display: none;
+  } */
+}
