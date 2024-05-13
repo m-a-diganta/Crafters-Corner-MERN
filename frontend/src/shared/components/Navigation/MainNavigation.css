@@ -24,7 +24,6 @@
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  width: 20rem;
   font-weight: 400;
   
 }
@@ -96,9 +95,3 @@
   }
 }
 
-
-/* @media (min-width: 768px) {
-  .nav-links ul li .avatar-image.logged-out {
-    display: none;
-  }
-} */

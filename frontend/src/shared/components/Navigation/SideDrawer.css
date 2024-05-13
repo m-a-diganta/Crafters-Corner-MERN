@@ -65,11 +65,14 @@
   
 }
 
-@media (min-width: 768px) {
+.side-drawer__box .additional-paths {
+  display: none;
+}
+
+@media (max-width: 768px) {
   .side-drawer__box .additional-paths {
-    display: none;
+    display: block;
   }
-  
 
   /* .side-drawer__box.logged-out {
     display: none;

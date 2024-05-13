@@ -8,6 +8,7 @@
   background-color: var(--primary-gray);
   box-shadow: var(--box-shadow);
   padding: 0rem 1.7rem;
+  overflow: hidden;
 }
 
 .product-image-upload-box {

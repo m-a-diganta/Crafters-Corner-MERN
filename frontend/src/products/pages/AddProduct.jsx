@@ -59,28 +59,30 @@ const AddProduct = () => {
             {formContent.imageUrl ? "Change Image" : "Pick an Image"}
           </Button>
         </div>
-        <Input
-          element="input"
-          id="title"
-          type="text"
-          label="Title"
-          placeholder="Product Name"
-          onInput={inputHandler}
-        />
-        <Input
-          element="textarea"
-          id="description"
-          type="text"
-          label="Description"
-          onInput={inputHandler}
-        />
-        <Input
-          element="input"
-          id="price"
-          type="number"
-          label="Price (BDT)"
-          onInput={inputHandler}
-        />
+        <div className="product-info-box">
+          <Input
+            element="input"
+            id="title"
+            type="text"
+            label="Title"
+            placeholder="Product Name"
+            onInput={inputHandler}
+          />
+          <Input
+            element="textarea"
+            id="description"
+            type="text"
+            label="Description"
+            onInput={inputHandler}
+          />
+          <Input
+            element="input"
+            id="price"
+            type="number"
+            label="Price (BDT)"
+            onInput={inputHandler}
+          />
+        </div>
       </main>
     </div>
   );

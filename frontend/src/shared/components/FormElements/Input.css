@@ -14,11 +14,11 @@
 
 .form-input input,
 .form-input textarea {
-  /* height: 3rem; */
   border-radius: 10px;
   border: 2px solid var(--dark-gray);
   padding: .7rem 1rem;
-  transition: all 0.3s ease 0s;
+  transition: all 0.2s ease 0s;
+  resize: vertical;
 }
 
 .form-input input:focus,
