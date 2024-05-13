@@ -5,15 +5,19 @@ export const useAuth = () => {
   const [userId, setUserId] = useState(null);
   const [username, setUsername] = useState(null);
   const [role, setRole] = useState(null);
+  const [userImage, setUserImage] = useState(null);
   const [isLoggedIn, setIsLoggedIn] = useState(null);
 
   const login = useCallback(() => {
     const loginFunction = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/loggedIn");
+        const response = await axios.get(
+          `${import.meta.env.VITE_REACT_APP_BACKEND_URL}/loggedIn`
+        );
         setIsLoggedIn(response.data.verified);
         setUserId(response.data.userId);
         setUsername(response.data.username);
+        setUserImage(response.data.userImage);
         setRole(response.data.role);
       } catch (err) {
         console.log(err);
@@ -24,7 +28,7 @@ export const useAuth = () => {
   }, []);
 
   const logout = useCallback(async () => {
-    await axios.get("http://localhost:5000/loggedOut");
+    await axios.get(`${import.meta.env.VITE_REACT_APP_BACKEND_URL}/loggedOut`);
     login();
   }, []);
 
@@ -32,5 +36,5 @@ export const useAuth = () => {
     login();
   }, [login, isLoggedIn]);
 
-  return { userId, username, role, isLoggedIn, login, logout };
+  return { userId, username, userImage, role, isLoggedIn, login, logout };
 };

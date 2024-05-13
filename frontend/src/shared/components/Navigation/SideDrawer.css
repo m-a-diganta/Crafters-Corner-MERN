@@ -7,6 +7,7 @@
   border: 1px solid var(--primary-color);
   background-color: white;
   box-shadow: var(--box-shadow);
+  overflow: hidden;
 }
 
 .side-drawer__box li a,
@@ -29,14 +30,11 @@
   transition: all 0.3s ease 0s;
 }
 
-.side-drawer__box li:first-child a,
-.side-drawer__box li:first-child button{
-  border-radius: 6px 6px 0px 0px;
-}
+
+
 
 .side-drawer__box li:last-child a,
 .side-drawer__box li:last-child button{
-  border-radius: 0px 0px 6px 6px;
   border-bottom: none;
   border-top: 1px solid var(--primary-color);
 
@@ -71,6 +69,7 @@
   .side-drawer__box .additional-paths {
     display: none;
   }
+  
 
   /* .side-drawer__box.logged-out {
     display: none;

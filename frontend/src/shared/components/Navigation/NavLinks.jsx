@@ -21,7 +21,7 @@ const NavLinks = (props) => {
         )}
 
       {Object.entries(props.paths).map(([name, path]) => (
-        <li key={name}>
+        <li key={name} className="main-paths">
           {name == "Logout" ? (
             <Link to="/">
               <button onClick={path}>{name}</button>
@@ -36,7 +36,7 @@ const NavLinks = (props) => {
               <Avatar
                 image={path}
                 width={auth.isLoggedIn ? "2.5rem" : "1.5rem"}
-                alt="hello"
+                alt="No Image Found"
               />
             </div>
           ) : (

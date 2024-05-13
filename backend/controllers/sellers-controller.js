@@ -73,6 +73,7 @@ const signupSeller = async (req, res, next) => {
       {
         userId: createdSeller.id,
         username: createdSeller.name,
+        userImage: createdSeller.image,
         role: "seller",
       },
       process.env.JWT_KEY
@@ -134,6 +135,7 @@ const loginSeller = async (req, res, next) => {
       {
         userId: existingSeller.id,
         username: existingSeller.name,
+        userImage: existingSeller.image,
         role: "seller",
       },
       process.env.JWT_KEY

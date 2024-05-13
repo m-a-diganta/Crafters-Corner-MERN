@@ -1,0 +1,39 @@
+.add-product-box {
+  width: 30rem;
+  height: 40rem;
+  border-radius: 15px;
+  margin-top: 5rem;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--primary-gray);
+  box-shadow: var(--box-shadow);
+  padding: 0rem 1.7rem;
+}
+
+.product-image-upload-box {
+  width: 100%;
+  height: 15rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  
+}
+
+.product-image-upload-box__image {
+  width: 12rem;
+  height: 12rem;
+  display: flex;
+  cursor: pointer;
+}
+
+.product-image-upload-box__image img {
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.product-image-upload-box__image input {
+  display: none;
+}

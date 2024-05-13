@@ -39,7 +39,9 @@ const Signup = () => {
       formData.append("role", formContent.role);
 
       const response = await axios.post(
-        `http://localhost:5000/${formContent.role}s/signup`,
+        `${import.meta.env.VITE_REACT_APP_BACKEND_URL}/${
+          formContent.role
+        }s/signup`,
         formData
       );
 
@@ -94,7 +96,7 @@ const Signup = () => {
             <Input
               element="input"
               id="username"
-              type="username"
+              type="text"
               label="Username"
               placeholder="John Doe"
               onInput={inputHandler}

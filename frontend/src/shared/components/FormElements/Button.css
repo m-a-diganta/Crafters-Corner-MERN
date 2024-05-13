@@ -1,4 +1,4 @@
-.button {
+.button-box {
   cursor: pointer;
   font-size: large;
   border: 2px solid var(--primary-color);
@@ -7,7 +7,22 @@
   transition: all 0.3s ease 0s;
 }
 
-.button:hover {
+.button-box:hover {
   background-color: var(--primary-color);
   color: var(--primary-gray)
+}
+
+.button-text {
+  color: var(--darker-gray);
+  font-size: medium;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  background: none;
+  transition: all 0.3s ease 0s;
+}
+
+.button-text:hover {
+  color: var(--primary-color);
+  opacity: 90%;
 }

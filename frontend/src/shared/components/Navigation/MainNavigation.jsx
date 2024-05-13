@@ -1,13 +1,11 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
-import { NavLink } from "react-router-dom";
 
 import { AuthContext } from "../../context/auth-context";
-import "./MainNavigation.css";
-import tempImage from "../../../assets/temp.png";
 import defaultExpandImage from "../../../assets/expand-button.png";
-import Avatar from "../UIElements/Avatar";
 import SideDrawer from "./SideDrawer";
 import NavLinks from "./NavLinks";
+
+import "./MainNavigation.css";
 
 const MainNavigation = () => {
   const auth = useContext(AuthContext);
@@ -21,11 +19,13 @@ const MainNavigation = () => {
   const customerPaths = {};
 
   const dropDownIcon = {
-    Image: auth.isLoggedIn ? tempImage : defaultExpandImage,
+    Image: auth.isLoggedIn
+      ? `${import.meta.env.VITE_REACT_APP_ASSET_URL}/${auth.userImage}`
+      : defaultExpandImage,
   };
 
   let sideDrawerPaths = {
-    Dashboard: "/dashboard",
+    Dashboard: "/seller/dashboard",
     Settings: "/settings",
     Logout: auth.logout,
   };

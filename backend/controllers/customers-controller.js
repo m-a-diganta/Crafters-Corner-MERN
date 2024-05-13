@@ -62,6 +62,7 @@ const signupCustomer = async (req, res, next) => {
       {
         userId: createdCustomer.id,
         username: createdCustomer.name,
+        userImage: createdCustomer.image,
         role: "customer",
       },
       process.env.JWT_KEY
@@ -104,6 +105,7 @@ const loginCustomer = async (req, res, next) => {
       {
         userId: existingCustomer.id,
         username: existingCustomer.name,
+        userImage: existingCustomer.image,
         role: "customer",
       },
       process.env.JWT_KEY

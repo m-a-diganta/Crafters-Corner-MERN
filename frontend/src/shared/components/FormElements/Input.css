@@ -12,15 +12,17 @@
   color: var(--darker-gray);
 }
 
-.form-input input {
-  height: 3rem;
+.form-input input,
+.form-input textarea {
+  /* height: 3rem; */
   border-radius: 10px;
   border: 2px solid var(--dark-gray);
-  padding: 1rem;
+  padding: .7rem 1rem;
   transition: all 0.3s ease 0s;
 }
 
-.form-input input:focus {
+.form-input input:focus,
+.form-input textarea:focus {
   outline: none;
   border-color: var(--primary-color) !important;
 }

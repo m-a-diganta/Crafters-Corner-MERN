@@ -31,7 +31,7 @@ const Login = () => {
       };
 
       const response = await axios.post(
-        "http://localhost:5000/sellers/login",
+        `${import.meta.env.VITE_REACT_APP_BACKEND_URL}/sellers/login`,
         registerData
       );
 

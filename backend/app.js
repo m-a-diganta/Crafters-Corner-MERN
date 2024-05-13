@@ -4,6 +4,7 @@ const mongoose = require("mongoose");
 const cookieParser = require("cookie-parser");
 const cors = require("cors");
 const fs = require("fs");
+const path = require("path");
 
 const HttpError = require("./models/http-error");
 const { checkLogin, logout } = require("./middleware/check-login");
@@ -24,16 +25,18 @@ app.use(
   })
 );
 
-app.use("/customers", customersRoutes);
-app.use("/sellers", sellersRoutes);
-app.use("/products", productsRoutes);
-app.use("/courses", coursesRoutes);
-app.get("/loggedIn", checkLogin);
-app.get("/loggedOut", logout);
+app.use("/public/images", express.static(path.join("public", "images")));
 
-app.get("/", (req, res, next) => {
-  res.json({ message: "Welcome " });
-});
+app.use("/api/customers", customersRoutes);
+app.use("/api/sellers", sellersRoutes);
+app.use("/api/products", productsRoutes);
+app.use("/api/courses", coursesRoutes);
+app.get("/api/loggedIn", checkLogin);
+app.get("/api/loggedOut", logout);
+
+// app.get("/", (req, res, next) => {
+//   res.json({ message: "Welcome " });
+// });
 
 app.use((req, res, next) => {
   const error = new HttpError("Could not find this route", 404);

@@ -18,10 +18,15 @@ import { AuthContext } from "./shared/context/auth-context";
 import LoadingSpinner from "./shared/components/UIElements/LoadingSpinner";
 import Home from "./shared/pages/Home";
 
+// Seller Pages
+import Dashboard from "./user/pages/seller/Dashboard";
+import AddProduct from "./products/pages/AddProduct";
+
 axios.defaults.withCredentials = true;
 
 function App() {
-  const { userId, username, role, isLoggedIn, login, logout } = useAuth();
+  const { userId, username, userImage, role, isLoggedIn, login, logout } =
+    useAuth();
 
   let routes;
   if (isLoggedIn) {
@@ -31,6 +36,8 @@ function App() {
           <Route path="/" element={<Home />}></Route>
           <Route path="/services" element={<Temp />}></Route>
           <Route path="/store" element={<Temp />}></Route>
+          <Route path="/seller/dashboard" element={<Dashboard />}></Route>
+          <Route path="/seller/add-product" element={<AddProduct />}></Route>
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       );
@@ -62,6 +69,7 @@ function App() {
         isLoggedIn: isLoggedIn,
         userId: userId,
         username: username,
+        userImage: userImage,
         role: role,
         login: login,
         logout: logout,

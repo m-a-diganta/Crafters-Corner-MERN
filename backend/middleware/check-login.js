@@ -22,6 +22,7 @@ const checkLogin = (req, res, next) => {
       verified: true,
       username: decodedToken.username,
       userId: decodedToken.userId,
+      userImage: decodedToken.userImage,
       role: decodedToken.role,
     };
 
