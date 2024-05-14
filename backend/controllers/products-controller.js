@@ -103,8 +103,7 @@ const createProduct = async (req, res, next) => {
     description,
     price,
     category,
-    image:
-      "https://img.freepik.com/premium-vector/anonymous-user-circle-icon-vector-illustration-flat-style-with-long-shadow_520826-1931.jpg?w=360",
+    image: req.file.path,
     stock,
     rating: [],
     seller: req.userData.userId,
@@ -131,7 +130,7 @@ const createProduct = async (req, res, next) => {
     await sess.commitTransaction();
   } catch (err) {
     const error = new HttpError("Creating Product Failed", 500);
-    return next(error);
+    return next(err);
   }
 
   res.status(201).json({ product: createdProduct });

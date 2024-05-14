@@ -13,16 +13,24 @@
 }
 
 .form-input input,
-.form-input textarea {
+.form-input textarea,
+.form-input select {
   border-radius: 10px;
   border: 2px solid var(--dark-gray);
   padding: .7rem 1rem;
+  width: 100%;
   transition: all 0.2s ease 0s;
+  color: var(--ash-color);
   resize: vertical;
 }
 
+.form-input select option:hover{
+  background-color: var(--primary-color);
+}
+
 .form-input input:focus,
-.form-input textarea:focus {
+.form-input textarea:focus,
+.form-input select:focus {
   outline: none;
   border-color: var(--primary-color) !important;
 }

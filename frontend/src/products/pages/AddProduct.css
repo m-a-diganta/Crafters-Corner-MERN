@@ -1,6 +1,5 @@
 .add-product-box {
   width: 30rem;
-  height: 40rem;
   border-radius: 15px;
   margin-top: 5rem;
   display: flex;
@@ -37,4 +36,14 @@
 
 .product-image-upload-box__image input {
   display: none;
+}
+
+.form-element-row {
+  display: flex;
+  justify-content: space-between;
+  
+}
+
+.product-submit-button {
+  margin: 2rem 0rem 3rem 0rem;
 }

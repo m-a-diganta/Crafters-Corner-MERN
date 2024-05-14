@@ -1,6 +1,7 @@
 const express = require("express");
 const { check } = require("express-validator");
 const checkAuth = require("../middleware/check-auth");
+const fileUpload = require("../middleware/file-upload");
 
 const router = express.Router();
 
@@ -12,7 +13,11 @@ router.get("/sellerproducts/:sid", productsController.getProductsBySellerId);
 router.get("/category/:category", productsController.getProductsByCategory);
 
 router.use(checkAuth("seller"));
-router.post("/new", productsController.createProduct);
+router.post(
+  "/new",
+  fileUpload.single("image"),
+  productsController.createProduct
+);
 router.patch("/:pid", productsController.updateProduct);
 router.delete("/:pid", productsController.deleteProduct);
 

@@ -30,7 +30,7 @@ const Button = (props) => {
       </button>
     );
 
-  return <div>{element}</div>;
+  return <>{element}</>;
 };
 
 export default Button;
