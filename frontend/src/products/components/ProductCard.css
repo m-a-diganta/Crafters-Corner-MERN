@@ -1,0 +1,68 @@
+.product-card-box {
+  background-color: var(--primary-gray);
+  width: 12rem;
+  height: 20rem;
+  border-radius: 15px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: var(--box-shadow);
+  cursor: pointer;
+  transition: var(--default-transition);
+}
+
+.product-card-box:hover {
+  transform: scale(1.03);
+}
+
+.product-card-image {
+  background-color:brown;
+  height: 12rem;
+  width: 100%;
+}
+
+.product-card-image img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.product-card-info h4 {
+  font-weight: 600;
+  font-size:large;
+  color: var(--ash-color);
+  margin: .5rem 0rem;
+}
+
+.product-card-info h5 {
+  font-weight: 600;
+  font-size:small;
+  color: var(--ash-color);
+  margin: .5rem 0rem;
+}
+
+.product-card-box button {
+  outline: none;
+  border: none;
+  background-color: var(--primary-light);
+  color: white;
+  height: 2.5rem;
+  transition: var(--default-transition);
+  cursor: pointer;
+}
+
+.product-card-box button:hover {
+  background-color: var(--primary-color);
+  font-size: small;
+}
+
+.product-card-box button[disabled] {
+  background-color: var(--dark-gray);
+}
+
+.product-card-box button[disabled]:hover {
+  color: transparent;
+  background-color: transparent;
+}
+

@@ -14,6 +14,7 @@
 
 
 .nav-title {
+  text-decoration: none;
   font-style: italic;
   font-size: x-large;
   font-weight: 700;

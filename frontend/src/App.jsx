@@ -21,6 +21,8 @@ import Home from "./shared/pages/Home";
 // Seller Pages
 import Dashboard from "./user/pages/seller/Dashboard";
 import AddProduct from "./products/pages/AddProduct";
+import SellerProducts from "./products/pages/SellerProducts";
+import ProductItem from "./products/components/ProductItem";
 
 axios.defaults.withCredentials = true;
 
@@ -36,8 +38,10 @@ function App() {
           <Route path="/" element={<Home />}></Route>
           <Route path="/services" element={<Temp />}></Route>
           <Route path="/store" element={<Temp />}></Route>
+          <Route path="/product/:pid" element={<ProductItem />}></Route>
           <Route path="/seller/dashboard" element={<Dashboard />}></Route>
           <Route path="/seller/add-product" element={<AddProduct />}></Route>
+          <Route path="/seller/products" element={<SellerProducts />}></Route>
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       );

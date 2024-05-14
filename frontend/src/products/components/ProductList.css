@@ -1,0 +1,13 @@
+.product-list-box {
+  margin: 0vw 12vw;
+  margin-top: 4rem;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 3rem;
+}
+
+.product-list-box li a {
+  text-decoration: none;
+}

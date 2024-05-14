@@ -7,6 +7,7 @@ import "./AddProduct.css";
 import { AuthContext } from "../../shared/context/auth-context";
 import Button from "../../shared/components/FormElements/Button";
 import Input from "../../shared/components/FormElements/Input";
+import { useNavigate } from "react-router-dom";
 
 const AddProduct = () => {
   const auth = useContext(AuthContext);
@@ -24,6 +25,8 @@ const AddProduct = () => {
   const inputHandler = (id, value) => {
     setFormContent({ ...formContent, [id]: value });
   };
+
+  const navigate = useNavigate();
 
   const productSubmitHandler = async (event) => {
     event.preventDefault();

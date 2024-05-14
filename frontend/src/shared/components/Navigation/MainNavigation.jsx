@@ -6,6 +6,7 @@ import SideDrawer from "./SideDrawer";
 import NavLinks from "./NavLinks";
 
 import "./MainNavigation.css";
+import { Link, NavLink } from "react-router-dom";
 
 const MainNavigation = () => {
   const auth = useContext(AuthContext);
@@ -68,7 +69,9 @@ const MainNavigation = () => {
 
   return (
     <header className="nav-header">
-      <h1 className="nav-title center">Crafters Corner</h1>
+      <NavLink to="/" className="nav-title center">
+        Crafters Corner
+      </NavLink>
       <div onClick={sideDrawerHandler} ref={sideDrawerRef}>
         <SideDrawer status={drawerIsOpen}>
           <NavLinks

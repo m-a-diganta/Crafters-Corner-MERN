@@ -9,10 +9,10 @@ const productsController = require("../controllers/products-controller");
 
 router.get("/", productsController.getProducts);
 router.get("/:pid", productsController.getProductById);
-router.get("/sellerproducts/:sid", productsController.getProductsBySellerId);
 router.get("/category/:category", productsController.getProductsByCategory);
 
 router.use(checkAuth("seller"));
+router.get("/sellerproducts/:sid", productsController.getProductsBySellerId);
 router.post(
   "/new",
   fileUpload.single("image"),
