@@ -3,7 +3,7 @@
 :root {
   --primary-color: #1c768f;
   --primary-light: #29b1d6;
-  --primary-red: rgba(255, 0, 76, 0.925);
+  --primary-red: rgb(255, 0, 76);
   --primary-green:  rgb(0, 177, 109);
   --secondary-color: #032539; 
   --primary-gray: #f3f3f3;

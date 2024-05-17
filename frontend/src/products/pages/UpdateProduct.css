@@ -1,0 +1,11 @@
+.price-edit-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* background-color: antiquewhite; */
+  gap: 4rem
+}
+
+.price-edit-input {
+
+}

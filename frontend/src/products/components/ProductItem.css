@@ -71,6 +71,15 @@
 }
 
 
+.quantity-box p {
+  font-size: small;
+  margin-left: .3rem;
+}
+
+.quantity-box h4 {
+  display: flex;
+  align-items: center;
+}
 
 .quantity-change-box {
   margin-top: 1rem;
@@ -115,7 +124,20 @@
     margin: 0;
 }
 
-.product-info-column > button {
+.product-info-column__buttons {
+  display: flex;
+  width: 100%;
+  gap: 1rem;
+}
+
+.product-info-column__buttons > button,
+.product-info-column__buttons > a {
+  width: 100%;
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: .83rem;
   outline: none;
   background-color: var(--primary-light);
   border: none;
@@ -129,22 +151,36 @@
 
 
 
+.product-info-column__buttons button:hover,
+.product-info-column__buttons a:hover {
+  background-color: var(--primary-color);
+  font-size: .8rem;
+}
+
 .product-info-column button:hover {
   background-color: var(--primary-color);
-  font-size: small;
 }
 
-.product-info-column > button:hover {
-  font-size: small;
-}
-
-.product-info-column > button[disabled] {
+.product-info-column__buttons > button[disabled] {
   background-color: var(--dark-gray);
 }
 
-.product-info-column > button[disabled]:hover {
+.product-info-column__buttons > button[disabled]:hover {
   color: transparent;
   background-color: transparent;
+}
+
+.product-info-column__buttons > .edit-button {
+  background-color: rgb(255, 192, 74)
+}
+.product-info-column__buttons > .edit-button:hover {
+  background-color: rgb(212, 145, 0);
+}
+.product-info-column__buttons > .delete-button {
+  background-color: var(--primary-red)
+}
+.product-info-column__buttons > .delete-button:hover {
+  background-color: rgb(207, 0, 62);
 }
 
 .green {

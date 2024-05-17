@@ -23,6 +23,7 @@ import Dashboard from "./user/pages/seller/Dashboard";
 import AddProduct from "./products/pages/AddProduct";
 import SellerProducts from "./products/pages/SellerProducts";
 import ProductItem from "./products/components/ProductItem";
+import UpdateProduct from "./products/pages/UpdateProduct";
 
 axios.defaults.withCredentials = true;
 
@@ -42,6 +43,10 @@ function App() {
           <Route path="/seller/dashboard" element={<Dashboard />}></Route>
           <Route path="/seller/add-product" element={<AddProduct />}></Route>
           <Route path="/seller/products" element={<SellerProducts />}></Route>
+          <Route
+            path="/seller/product/:pid/edit"
+            element={<UpdateProduct />}
+          ></Route>
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       );

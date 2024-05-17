@@ -1,15 +1,26 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import { AuthContext } from "../../shared/context/auth-context";
 import axios from "axios";
 
-import "./ProductItem.css";
+import { AuthContext } from "../../shared/context/auth-context";
+import Input from "../../shared/components/FormElements/Input";
 
-const ProductItem = () => {
+import "./UpdateProduct.css";
+
+const UpdateProduct = () => {
   const auth = useContext(AuthContext);
   const [loadedProduct, setLoadedProduct] = useState();
   const [quantity, setQuantity] = useState(1);
   const pid = useParams().pid;
+
+  const [formContent, setFormContent] = useState({
+    price: "",
+    stock: "",
+  });
+
+  const inputHandler = (id, value) => {
+    setFormContent({ ...formContent, [id]: value });
+  };
 
   const fetchProduct = async () => {
     try {
@@ -42,6 +53,10 @@ const ProductItem = () => {
     }
   };
 
+  const productUpdateSubmitHandler = (event) => {
+    event.preventDefault();
+  };
+
   useEffect(() => {
     fetchProduct();
   }, []);
@@ -70,7 +85,12 @@ const ProductItem = () => {
             <div className="product-info-container">
               <div className="product-info-column">
                 <h1>{loadedProduct.title}</h1>
-                <h3>{loadedProduct.price} /- BDT</h3>
+                <div className="price-edit-box">
+                  <div className="price-edit-input">
+                    <Input element="input" onInput={inputHandler} />
+                  </div>
+                  <h3>/- BDT</h3>
+                </div>
                 {loadedProduct.stock ? (
                   <div className="quantity-box">
                     <h4 className="green">
@@ -123,4 +143,4 @@ const ProductItem = () => {
   );
 };
 
-export default ProductItem;
+export default UpdateProduct;
