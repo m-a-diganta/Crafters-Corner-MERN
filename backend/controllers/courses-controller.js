@@ -76,7 +76,7 @@ const createCourse = async (req, res, next) => {
     return next(new HttpError('Invalid inputs passed', 422));
   }
 
-  const { title, description, price, category, stock } = req.body;
+  const { title, description, price, category } = req.body;
 
   const createdCourse = new Course({
     title,
@@ -84,7 +84,6 @@ const createCourse = async (req, res, next) => {
     price,
     category,
     image: req.file.path,
-    stock,
     rating: [],
     seller: req.userData.userId,
   });
