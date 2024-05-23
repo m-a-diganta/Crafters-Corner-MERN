@@ -69,7 +69,7 @@ const AddCourse = () => {
                   alt="Unable to show image"
                 />
               ) : (
-                <img src={DefaultImage} alt="Select Image" />
+                <img src={DefaultImage} alt="Select Thumbnail" />
               )}
               <input
                 type="file"
@@ -83,7 +83,7 @@ const AddCourse = () => {
               width="10rem"
               onClick={pickImageHandler}
             >
-              {formContent.image ? "Change Image" : "Select Image"}
+              {formContent.image ? "Change Thumbnail" : "Select Thumbnail"}
             </Button>
           </div>
           <div className="course-info-box">

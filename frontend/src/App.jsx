@@ -26,6 +26,7 @@ import ProductItem from "./products/components/ProductItem";
 import UpdateProduct from "./products/pages/UpdateProduct";
 
 import AddCourse from "./courses/pages/AddCourse";
+import SellerCourses from "./courses/pages/SellerCourses";
 
 
 
@@ -48,6 +49,7 @@ function App() {
           <Route path="/seller/add-product" element={<AddProduct />}></Route>
           <Route path="/seller/products" element={<SellerProducts />}></Route>
           <Route path="/seller/add-course" element={<AddCourse />}></Route>
+          <Route path="/seller/courses" element={<SellerCourses />}></Route>
           <Route
             path="/seller/product/:pid/edit"
             element={<UpdateProduct />}

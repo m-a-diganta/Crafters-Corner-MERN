@@ -1,0 +1,76 @@
+.course-card-box {
+    background-color: var(--primary-gray);
+    width: 30rem;
+    height: 30rem;
+    border-radius: 10px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: var(--box-shadow);
+    cursor: pointer;
+    transition: var(--default-transition);
+  }
+  
+.course-card-box:hover {
+    transform: scale(1.03);
+  }
+  
+.course-card-image {
+    background-color: brown;
+    height: 15rem;
+    width: 100%;
+  }
+  
+.course-card-image img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+  }
+  
+.course-card-info h4 {
+    font-weight: 600;
+    font-size: large;
+    color: var(--ash-color);
+    margin: 0.5rem 0rem;
+  }
+  
+.course-card-info p {
+    padding-left: 1rem;
+    padding-right: 1rem;
+    font-size: small;
+    color: var(--ash-color);
+    margin: 0.5rem 0rem;
+  }
+  
+.course-card-info h5 {
+    font-weight: 800;
+    font-size: large;
+    color: var(--ash-color);
+    margin: 0.5rem 0rem;
+  }
+  
+.course-card-box button {
+    outline: none;
+    border: none;
+    background-color: var(--primary-light);
+    color: white;
+    height: 2.5rem;
+    transition: var(--default-transition);
+    cursor: pointer;
+  }
+  
+.course-card-box button:hover {
+    background-color: var(--primary-color);
+    font-size: small;
+  }
+  
+.course-card-box button[disabled] {
+    background-color: var(--dark-gray);
+  }
+  
+.course-card-box button[disabled]:hover {
+    color: transparent;
+    background-color: transparent;
+  }
+  
