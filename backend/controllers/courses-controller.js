@@ -76,21 +76,21 @@ const createCourse = async (req, res, next) => {
     return next(new HttpError('Invalid inputs passed', 422));
   }
 
-  const { title, description, price, category, stock, seller } = req.body;
+  const { title, description, price, category, stock } = req.body;
 
   const createdCourse = new Course({
     title,
     description,
     price,
     category,
-    image: 'https://img.freepik.com/premium-vector/anonymous-user-circle-icon-vector-illustration-flat-style-with-long-shadow_520826-1931.jpg?w=360',
+    image: req.file.path,
     stock,
     rating: [],
-    seller
+    seller: req.userData.userId,
   });
   let user;
   try {
-    user = await Seller.findById(seller);
+    user = await Seller.findById(req.userData.userId);
   } catch (err) {
     const error = new HttpError('Creating Course Failed', 500);
     return next(error);

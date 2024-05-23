@@ -1,0 +1,49 @@
+.add-course-box {
+    width: 30rem;
+    border-radius: 15px;
+    margin-top: 5rem;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--primary-gray);
+    box-shadow: var(--box-shadow);
+    padding: 0rem 1.7rem;
+    overflow: hidden;
+  }
+  
+  .course-image-upload-box {
+    width: 100%;
+    height: 15rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 2rem;
+    margin-top: 2rem;
+  }
+  
+  .course-image-upload-box__image {
+    width: 24rem;
+    height: 12rem;
+    display: flex;
+    cursor: pointer;
+  }
+  
+  .course-image-upload-box__image img {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    object-fit: cover;
+  }
+  
+  .course-image-upload-box__image input {
+    display: none;
+  }
+  
+  .form-element-row {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .course-submit-button {
+    margin: 2rem 0rem 3rem 0rem;
+  }
+  
