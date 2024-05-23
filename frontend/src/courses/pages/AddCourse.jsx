@@ -116,7 +116,7 @@ const AddCourse = () => {
                 id="category"
                 type="select"
                 label="Category"
-                options={["Development", "Business", "Design", "Category4"]}
+                options={["Programming", "Design", "Marketing"]}
                 onInput={inputHandler}
                 width="45%"
               />

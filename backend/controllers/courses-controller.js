@@ -108,7 +108,7 @@ const createCourse = async (req, res, next) => {
     await user.save({ session: sess });
     await sess.commitTransaction();
   } catch (err) {
-    const error = new HttpError('Creating Course Failed', 500);
+    const error = new HttpError('Creating Course Failed 2', 500);
     return next(error);
   }
 
