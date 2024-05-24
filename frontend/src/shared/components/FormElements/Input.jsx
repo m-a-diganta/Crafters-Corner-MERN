@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import "./Input.css";
 
 const Input = (props) => {
-  const [value, setValue] = useState(props.options ? props.options[0] : "");
+  const [value, setValue] = useState(props.options ? props.options[0] : props.defaultValue ? props.defaultValue :  "");
 
   const element = {
     input: (

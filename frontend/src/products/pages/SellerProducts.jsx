@@ -26,7 +26,15 @@ const SellerProducts = () => {
     fetchProducts();
   }, []);
 
-  return <>{loadedProducts && <ProductList items={loadedProducts} />}</>;
+  return <div className="page_container">
+    <div className="seller-product-page_box">
+    <h1 className="product-headline">Products: {auth.username}</h1>
+    <div className="h-line"></div>
+    <div className="product_container">
+      {loadedProducts && <ProductList items={loadedProducts} />}
+    </div>
+  </div>
+</div>;
 };
 
 export default SellerProducts;

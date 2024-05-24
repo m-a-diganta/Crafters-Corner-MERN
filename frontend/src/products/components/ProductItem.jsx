@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { AuthContext } from "../../shared/context/auth-context";
 import axios from "axios";
 
@@ -41,6 +41,21 @@ const ProductItem = () => {
       setQuantity(quantity + 1);
     }
   };
+
+  const navigate = useNavigate();
+
+  const productDeleteHandler = async () => {
+    try {
+      const responseData = await axios.delete(
+        `${import.meta.env.VITE_REACT_APP_BACKEND_URL}/products/${pid}`
+      );
+
+      navigate(-1);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
 
   useEffect(() => {
     fetchProduct();
@@ -103,7 +118,7 @@ const ProductItem = () => {
                       >
                         EDIT
                       </Link>
-                      <button type="button" className="delete-button">
+                      <button type="button" className="delete-button" onClick={productDeleteHandler}>
                         DELETE
                       </button>
                     </>

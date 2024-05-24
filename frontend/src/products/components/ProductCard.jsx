@@ -4,7 +4,7 @@ import "./ProductCard.css";
 
 const ProductCard = (props) => {
   return (
-    <main className="product-card-box">
+    <main className="product-card-box ">
       <div className="product-card-image">
         <img
           src={`${import.meta.env.VITE_REACT_APP_ASSET_URL}/${

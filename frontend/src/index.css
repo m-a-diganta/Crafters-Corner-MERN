@@ -35,3 +35,25 @@ ul {
 .main {
   margin-top: 4rem;
 }
+
+.page_container {
+  display: flex;
+  margin: 8rem 10vw 0rem 10vw;
+  /* height: 20rem; */
+}
+
+.product_container {
+  padding: 1rem;
+}
+
+.product-headline {
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.h-line {
+  width: 100%;
+  height: 1px;
+  background-color: var(--ash-color);
+  box-shadow: 1px 2px 5px rgb(0, 0, 0);
+}

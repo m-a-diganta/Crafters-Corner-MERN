@@ -3,6 +3,7 @@ const HttpError = require("../models/http-error");
 const mongoose = require("mongoose");
 const Product = require("../models/product");
 const Seller = require("../models/seller");
+const fs = require("fs");
 
 const getProducts = async (req, res, next) => {
   let products;
@@ -137,7 +138,7 @@ const createProduct = async (req, res, next) => {
 };
 
 const updateProduct = async (req, res, next) => {
-  const { title, description, price, category, image, stock } = req.body;
+  const { price, stock } = req.body;
   const productId = req.params.pid;
 
   let product;
@@ -148,14 +149,8 @@ const updateProduct = async (req, res, next) => {
     return next(error);
   }
 
-  if (title !== undefined) product.title = title;
-  if (description !== undefined) product.description = description;
   if (price !== undefined) product.price = price;
-  if (category !== undefined) product.category = category;
-  if (image !== undefined) product.image = image;
   if (stock !== undefined) product.stock = stock;
-
-  console.log(product);
 
   try {
     await product.save();
@@ -198,6 +193,8 @@ const deleteProduct = async (req, res, next) => {
   const sellerId = product.seller;
   const seller = await Seller.findById(sellerId);
 
+  const imagePath = product.image;
+
   try {
     const sess = await mongoose.startSession();
     sess.startTransaction();
@@ -221,6 +218,10 @@ const deleteProduct = async (req, res, next) => {
       return next(error);
     }
   }
+
+  fs.unlink(imagePath, (err) => {
+    console.error(err);
+  });
 
   res.status(200).json({ message: "Deleted Product" });
 };

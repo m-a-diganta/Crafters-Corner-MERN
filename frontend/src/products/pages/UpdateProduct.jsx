@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 
 import { AuthContext } from "../../shared/context/auth-context";
@@ -10,7 +10,6 @@ import "./UpdateProduct.css";
 const UpdateProduct = () => {
   const auth = useContext(AuthContext);
   const [loadedProduct, setLoadedProduct] = useState();
-  const [quantity, setQuantity] = useState(1);
   const pid = useParams().pid;
 
   const [formContent, setFormContent] = useState({
@@ -29,6 +28,10 @@ const UpdateProduct = () => {
       );
 
       setLoadedProduct(responseData.data.product);
+      setFormContent({
+        price: responseData.data.product.price,
+        stock: responseData.data.product.stock,
+      });
     } catch (err) {
       console.error(err);
     }
@@ -36,25 +39,39 @@ const UpdateProduct = () => {
 
   const quantityChangeHandler = (event) => {
     const newQuantity = parseInt(event.target.value);
-    if (newQuantity >= 0 && newQuantity <= loadedProduct.stock) {
-      setQuantity(newQuantity);
+    if (newQuantity >= 0 && newQuantity <= 100) {
+      setFormContent({ ...formContent, stock: newQuantity });
     }
   };
 
   const quantityDecreaseHandler = () => {
-    if (quantity > 0) {
-      setQuantity(quantity - 1);
+    if (formContent.stock > 0) {
+      setFormContent({ ...formContent, stock: formContent.stock - 1 });
     }
   };
 
   const quantityIncreaseHandler = () => {
-    if (loadedProduct.stock > quantity) {
-      setQuantity(quantity + 1);
+    if (101 > formContent.stock) {
+      setFormContent({ ...formContent, stock: formContent.stock + 1 });
     }
   };
 
-  const productUpdateSubmitHandler = (event) => {
+  const navigate = useNavigate();
+
+  const productUpdateSubmitHandler = async (event) => {
     event.preventDefault();
+    try {
+      const { price, stock } = formContent;
+      const updatedData = { price, stock };
+
+      const response = await axios.patch(
+        `${import.meta.env.VITE_REACT_APP_BACKEND_URL}/products/${pid}`,
+        updatedData
+      );
+      navigate(`/product/${pid}`, { replace: true });
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   useEffect(() => {
@@ -83,19 +100,30 @@ const UpdateProduct = () => {
               </div>
             </div>
             <div className="product-info-container">
-              <div className="product-info-column">
-                <h1>{loadedProduct.title}</h1>
-                <div className="price-edit-box">
-                  <div className="price-edit-input">
-                    <Input element="input" onInput={inputHandler} />
+              <form onSubmit={productUpdateSubmitHandler}>
+                <div className="product-info-column">
+                  <h1>{loadedProduct.title}</h1>
+                  <div className="price-edit-box">
+                    <div className="price-edit-input">
+                      <Input
+                        element="input"
+                        id="price"
+                        type="number"
+                        onInput={inputHandler}
+                        defaultValue={formContent.price}
+                      />
+                    </div>
+                    <h3>/- BDT</h3>
                   </div>
-                  <h3>/- BDT</h3>
-                </div>
-                {loadedProduct.stock ? (
                   <div className="quantity-box">
-                    <h4 className="green">
-                      In Stock <p>({loadedProduct.stock})</p>
-                    </h4>
+                    {loadedProduct.stock ? (
+                      <h4 className="green">
+                        In Stock <p>({loadedProduct.stock})</p>
+                      </h4>
+                    ) : (
+                      <h4 className="red">Stock Out</h4>
+                    )}
+
                     <div className="quantity-change-box">
                       <button type="button" onClick={quantityDecreaseHandler}>
                         {"<"}
@@ -104,37 +132,23 @@ const UpdateProduct = () => {
                         id="quantity"
                         type="number"
                         onChange={quantityChangeHandler}
-                        value={quantity}
+                        value={formContent.stock}
                       />
                       <button type="button" onClick={quantityIncreaseHandler}>
                         {">"}
                       </button>
                     </div>
                   </div>
-                ) : (
-                  <h4 className="red">Stock Out</h4>
-                )}
-                <div className="product-info-column__buttons">
-                  {auth.userId === loadedProduct.seller && (
-                    <>
-                      <Link
-                        to={`/seller/product/${loadedProduct.id}/edit`}
-                        className="edit-button"
-                      >
-                        EDIT
-                      </Link>
-                      <button type="button" className="delete-button">
-                        DELETE
-                      </button>
-                    </>
-                  )}
-                  {auth.role === "customer" && (
-                    <button disabled={!loadedProduct.stock} type="button">
-                      ADD TO CART
-                    </button>
-                  )}
+
+                  <div className="product-info-column__buttons">
+                    {auth.userId === loadedProduct.seller && (
+                      <>
+                        <button type="submit">UPDATE</button>
+                      </>
+                    )}
+                  </div>
                 </div>
-              </div>
+              </form>
             </div>
           </main>
         </div>

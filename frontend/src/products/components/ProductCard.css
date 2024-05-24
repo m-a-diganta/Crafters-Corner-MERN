@@ -1,15 +1,18 @@
 .product-card-box {
   background-color: var(--primary-gray);
-  width: 12rem;
-  height: 20rem;
-  border-radius: 15px;
+  width: 8rem;
+  height: 13rem;
+  border-radius: 10px;
   overflow: hidden;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  align-items: center;
   box-shadow: var(--box-shadow);
   cursor: pointer;
   transition: var(--default-transition);
+  gap: .5rem
+  
 }
 
 .product-card-box:hover {
@@ -18,7 +21,7 @@
 
 .product-card-image {
   background-color:brown;
-  height: 12rem;
+  height: 7rem;
   width: 100%;
 }
 
@@ -28,33 +31,44 @@
   object-fit: cover;
 }
 
+.product-card-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap:.3rem
+}
+
 .product-card-info h4 {
+  line-height: 1rem;
   font-weight: 600;
-  font-size:large;
+  font-size: .8rem;
   color: var(--ash-color);
-  margin: .5rem 0rem;
+  text-align: center;
 }
 
 .product-card-info h5 {
   font-weight: 600;
-  font-size:small;
+  font-size:.6rem;
   color: var(--ash-color);
-  margin: .5rem 0rem;
+  
 }
 
 .product-card-box button {
+  width: 100%;
   outline: none;
   border: none;
   background-color: var(--primary-light);
   color: white;
-  height: 2.5rem;
+  height: 2rem;
   transition: var(--default-transition);
   cursor: pointer;
+  font-size: .7rem;
 }
 
 .product-card-box button:hover {
   background-color: var(--primary-color);
-  font-size: small;
+  font-size: .75rem;
 }
 
 .product-card-box button[disabled] {

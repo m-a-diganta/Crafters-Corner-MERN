@@ -1,11 +1,11 @@
 .product-list-box {
-  margin: 0vw 12vw;
-  margin-top: 4rem;
+  /* margin: 0vw 12vw; */
+  /* margin-top: 4rem; */
   width: 100%;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   flex-wrap: wrap;
-  gap: 3rem;
+  gap: 1.5rem;
 }
 
 .product-list-box li a {
