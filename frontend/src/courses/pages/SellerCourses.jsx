@@ -26,7 +26,15 @@ const SellerCourses = () => {
     fetchCourses();
   }, []);
 
-  return <>{loadedCourses && <CourseList items={loadedCourses} />}</>;
+  return <div className="page_container">
+    <div className="seller-course-page_box">
+    <h1 className="course-headline">Courses: {auth.username}</h1>
+    <div className="h-line"></div>
+    <div className="course_container">
+      {loadedCourses && <CourseList items={loadedCourses} />}
+    </div>
+  </div>
+</div>
 };
 
 export default SellerCourses;

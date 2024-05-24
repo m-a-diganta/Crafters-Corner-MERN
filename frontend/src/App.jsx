@@ -28,7 +28,7 @@ import UpdateProduct from "./products/pages/UpdateProduct";
 import AddCourse from "./courses/pages/AddCourse";
 import SellerCourses from "./courses/pages/SellerCourses";
 import CourseItem from "./courses/components/CourseItem";
-// import UpdateCourse from "./courses/pages/UpdateCourse";
+import UpdateCourse from "./courses/pages/UpdateCourse";
 
 axios.defaults.withCredentials = true;
 
@@ -54,6 +54,10 @@ function App() {
           <Route
             path="/seller/product/:pid/edit"
             element={<UpdateProduct />}
+          ></Route>
+          <Route
+            path="/seller/course/:cid/edit"
+            element={<UpdateCourse />}
           ></Route>
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
