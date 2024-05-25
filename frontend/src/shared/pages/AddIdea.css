@@ -1,0 +1,22 @@
+.add-idea-box {
+    width: 30rem;
+    border-radius: 15px;
+    margin-top: 5rem;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--primary-gray);
+    box-shadow: var(--box-shadow);
+    padding: 0rem 1.7rem;
+    overflow: hidden;
+  }
+  
+  
+  .form-element-row {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .course-submit-button {
+    margin: 2rem 0rem 3rem 0rem;
+  }
+  

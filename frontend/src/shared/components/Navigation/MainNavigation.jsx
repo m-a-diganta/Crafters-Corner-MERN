@@ -33,6 +33,7 @@ const MainNavigation = () => {
 
   let navBarPaths = {
     Home: "/",
+    Group: "/group",
     Store: "/store",
     Services: "/services",
   };

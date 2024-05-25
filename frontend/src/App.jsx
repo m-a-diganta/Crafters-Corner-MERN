@@ -17,6 +17,7 @@ import Signup from "./user/pages/Signup";
 import { AuthContext } from "./shared/context/auth-context";
 import LoadingSpinner from "./shared/components/UIElements/LoadingSpinner";
 import Home from "./shared/pages/Home";
+import Group from "./shared/pages/Group";
 
 // Seller Pages
 import Dashboard from "./user/pages/seller/Dashboard";
@@ -30,6 +31,8 @@ import SellerCourses from "./courses/pages/SellerCourses";
 import CourseItem from "./courses/components/CourseItem";
 import UpdateCourse from "./courses/pages/UpdateCourse";
 
+import AddIdea from "./shared/pages/AddIdea";
+
 axios.defaults.withCredentials = true;
 
 function App() {
@@ -42,6 +45,8 @@ function App() {
       routes = (
         <Routes>
           <Route path="/" element={<Home />}></Route>
+          <Route path="/group" element={<Group />}></Route>
+          <Route path="/add-idea" element={<AddIdea />}></Route>
           <Route path="/services" element={<Temp />}></Route>
           <Route path="/store" element={<Temp />}></Route>
           <Route path="/product/:pid" element={<ProductItem />}></Route>

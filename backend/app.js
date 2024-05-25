@@ -15,6 +15,7 @@ const customersRoutes = require("./routes/customers-routes");
 const sellersRoutes = require("./routes/sellers-routes");
 const productsRoutes = require("./routes/products-routes");
 const coursesRoutes = require("./routes/courses-routes");
+const ideasRoutes = require("./routes/ideas-routes");
 
 app.use(bodyParser.json());
 app.use(cookieParser());
@@ -31,6 +32,7 @@ app.use("/api/customers", customersRoutes);
 app.use("/api/sellers", sellersRoutes);
 app.use("/api/products", productsRoutes);
 app.use("/api/courses", coursesRoutes);
+app.use("/api/ideas", ideasRoutes);
 app.get("/api/loggedIn", checkLogin);
 app.get("/api/loggedOut", logout);
 
