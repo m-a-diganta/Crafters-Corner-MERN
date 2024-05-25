@@ -1,3 +1,13 @@
+.group-page__box {
+  background-color: #969696;
+  display: flex;
+  flex-direction: column;
+}
+
+.idea_container {
+  padding: 1rem;
+}
+
 .box-container {
     display: flex;
     justify-content: center;
@@ -35,5 +45,6 @@
     color: #fff;
     border-color: #1c768f;
   }
+
   
   

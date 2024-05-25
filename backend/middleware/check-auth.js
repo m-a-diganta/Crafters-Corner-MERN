@@ -13,7 +13,7 @@ const checkAuth = (userRole) => {
       }
       const decodedToken = jwt.verify(token, process.env.JWT_KEY);
 
-      if (userRole !== decodedToken.role) {
+      if (userRole !== decodedToken.role && userRole !== "any") {
         const error = new HttpError("Authorization Failed", 401);
         return next(error);
       }

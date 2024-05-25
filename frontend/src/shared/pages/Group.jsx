@@ -5,18 +5,19 @@ import axios from "axios";
 import ProductList from "../../products/components/ProductList";
 import { Link } from "react-router-dom";
 import "./Group.css";
+import IdeaList from "../components/IdeaList";
 
 const Home = () => {
   const auth = useContext(AuthContext);
-  const [loadedProducts, setLoadedProducts] = useState();
+  const [loadedIdeas, setLoadedIdeas] = useState();
 
   const fetchProducts = async () => {
     try {
       const responseData = await axios.get(
-        `${import.meta.env.VITE_REACT_APP_BACKEND_URL}/products/`
+        `${import.meta.env.VITE_REACT_APP_BACKEND_URL}/ideas/`
       );
 
-      setLoadedProducts(responseData.data.products);
+      setLoadedIdeas(responseData.data.ideas);
     } catch (err) {
       console.error(err);
     }
@@ -28,11 +29,11 @@ const Home = () => {
 
   return (
     <div className="page_container">
-      <div className="home-page_box">
-        <h1 className="product-headline">Products</h1>
+      <div className="group-page__box">
+        <h1 className="product-headline">Ideas</h1>
         <div className="h-line"></div>
-        <div className="product_container">
-            {loadedProducts && <ProductList items={loadedProducts} />}
+        <div className="idea_container">
+            {loadedIdeas && <IdeaList items={loadedIdeas} />}
         </div>
         <div className="box-container">
             <div className="idea-box center">

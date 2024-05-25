@@ -6,13 +6,16 @@ const Seller = require('../models/seller');
 const Customer = require('../models/customer');
 
 const getIdeas = async (req, res, next) => {
+
   let ideas;
   try {
     ideas = await Idea.find();
   } catch (err) {
+    console.log(err)
     const error = new HttpError('Fetching ideas failed', 500);
     return next(error);
   }
+  
   res.json({ ideas: (await ideas).map(idea => idea.toObject({ getters: true })) });
 };
 
@@ -78,16 +81,13 @@ const createIdea = async (req, res, next) => {
   }
 
   const { title, description } = req.body;
-  console.log('Request Body:', req.body);  // Log the request body
 
   const createdIdea = new Idea({
     title,
     description,
-    postedBy: "fds",
+    postedBy: req.userData.userId,
   });
 
-  // Log created idea
-  console.log('Created Idea:', createdIdea);
 
   try {
     await createdIdea.save();

@@ -33,7 +33,6 @@ const AddIdea = () => {
         updatedData,
       );
 
-      console.log("Response", response.data); 
       navigate("/group");
     }catch (err) {
       console.log(err);

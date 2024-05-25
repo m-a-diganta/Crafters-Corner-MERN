@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 const ProductList = (props) => {
   return (
     
-      <ul className="product-list-box">
+      <ul className="product-list__box">
         {props.items.map((item) => (
           <li key={item.id}>
             <Link to={`/product/${item.id}`}>

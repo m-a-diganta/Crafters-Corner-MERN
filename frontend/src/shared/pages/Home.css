@@ -1,4 +1,4 @@
-.home-page-box {
+.home-page__box {
   display: flex;
   flex-direction: column;
 }

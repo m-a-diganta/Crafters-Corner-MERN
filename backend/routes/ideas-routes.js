@@ -11,7 +11,7 @@ router.get("/:iid", ideasController.getIdeaById);
 router.get("/user/:uid", ideasController.getIdeasByUserId);
 router.get("/date/:date", ideasController.getIdeasByDate);
 
-// router.use(checkAuth("seller"));
+router.use(checkAuth("any"));
 
 router.post(
   "/new",
